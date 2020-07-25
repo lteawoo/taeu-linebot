@@ -73,6 +73,9 @@ public class MessageHandler {
         }
         break;
       }
+      case "디버그": {
+        this.replyText(replyToken, "test: " + event.toString());
+      }
       default:
         log.info("Returns echo message {}: {}", replyToken, text);
         this.replyText(replyToken, text);
