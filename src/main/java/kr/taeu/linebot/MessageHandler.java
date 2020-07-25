@@ -76,6 +76,7 @@ public class MessageHandler {
       default:
         log.info("Returns echo message {}: {}", replyToken, text);
         this.replyText(replyToken, text);
+        this.replyText(replyToken, event.getSource().getSenderId() + ", " + event.getSource().getUserId());
         break;
       }
     }
