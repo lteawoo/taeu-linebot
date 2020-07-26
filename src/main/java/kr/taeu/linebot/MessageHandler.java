@@ -34,7 +34,7 @@ import lombok.extern.slf4j.Slf4j;
 public class MessageHandler {
     private final LineMessagingClient lineMessagingClient;
     
-    @GetMapping("/callApi")
+    @GetMapping("/callapi")
     public void callApi() {
       lineMessagingClient.pushMessage(new PushMessage("Cf5dc393dbfc047212f20cb10f622baee", Arrays.asList(
           new TextMessage("장애송신!!"),
