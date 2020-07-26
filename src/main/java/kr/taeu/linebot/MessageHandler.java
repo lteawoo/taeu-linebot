@@ -6,7 +6,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.linecorp.bot.client.LineMessagingClient;
+import com.linecorp.bot.model.PushMessage;
 import com.linecorp.bot.model.ReplyMessage;
 import com.linecorp.bot.model.event.Event;
 import com.linecorp.bot.model.event.MessageEvent;
@@ -24,10 +28,18 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+@RestController
 @LineMessageHandler
 @RequiredArgsConstructor
 public class MessageHandler {
     private final LineMessagingClient lineMessagingClient;
+    
+    @GetMapping("/callApi")
+    public void callApi() {
+      lineMessagingClient.pushMessage(new PushMessage("Cf5dc393dbfc047212f20cb10f622baee", Arrays.asList(
+          new TextMessage("장애송신!!"),
+          new TextMessage("이러쿵저러쿵~"))));
+    }
     
     @EventMapping
     public void handleTextMessageEvent(MessageEvent<TextMessageContent> event) throws Exception {
