@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.linecorp.bot.client.LineMessagingClient;
@@ -38,7 +39,7 @@ import lombok.extern.slf4j.Slf4j;
 public class MessageHandler {
     private final LineMessagingClient lineMessagingClient;
     
-    @GetMapping("/callapi")
+    @PostMapping("/callapi")
     public void callApi(HttpServletRequest request) throws IOException {
       String requestBody = request.getReader().lines()
           .collect(Collectors.joining(System.lineSeparator()));
