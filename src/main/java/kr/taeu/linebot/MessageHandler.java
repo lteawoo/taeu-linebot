@@ -2,9 +2,13 @@ package kr.taeu.linebot;
 
 import static java.util.Collections.singletonList;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
+import java.util.stream.Collectors;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,10 +39,13 @@ public class MessageHandler {
     private final LineMessagingClient lineMessagingClient;
     
     @GetMapping("/callapi")
-    public void callApi() {
+    public void callApi(HttpServletRequest request) throws IOException {
+      String requestBody = request.getReader().lines()
+          .collect(Collectors.joining(System.lineSeparator()));
+      
       lineMessagingClient.pushMessage(new PushMessage("Cf5dc393dbfc047212f20cb10f622baee", Arrays.asList(
           new TextMessage("장애송신!!"),
-          new TextMessage("이러쿵저러쿵~"))));
+          new TextMessage("내용: " + requestBody))));
     }
     
     @EventMapping
