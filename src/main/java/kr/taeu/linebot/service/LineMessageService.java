@@ -31,13 +31,16 @@ import lombok.extern.slf4j.Slf4j;
 public class LineMessageService {
   private final LineMessagingClient lineMessagingClient;
   
-  public void pushMessage(String text) {
+  public BotApiResponse pushMessage(String text) {
+    // TODO non-blocking 적용?
     CompletableFuture<BotApiResponse> future = lineMessagingClient.pushMessage(new PushMessage("Cf5dc393dbfc047212f20cb10f622baee", Arrays.asList(
         new TextMessage("장애송신!\n"
             + "내용: " + text))));
     log.info("아직 response 없음");
     BotApiResponse response = future.join();
     log.info("response get! " + response);
+    
+    return response;
   }
   
   @EventMapping
