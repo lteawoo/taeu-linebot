@@ -15,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @LineMessageHandler
 @RequiredArgsConstructor
-public class LineMessageService {
+public class LineMessageSendService {
   private final LineMessagingClient lineMessagingClient;
   
   public BotApiResponse pushMessage(String text) {
