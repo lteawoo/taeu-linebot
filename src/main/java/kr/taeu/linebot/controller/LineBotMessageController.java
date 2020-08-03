@@ -8,15 +8,15 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import kr.taeu.linebot.service.LineMessageSendService;
+import kr.taeu.linebot.service.LineMessageService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-public class LineBotMessageSendController {
-  private final LineMessageSendService lineMessageService;
+public class LineBotMessageController {
+  private final LineMessageService lineMessageService;
   
   @PostMapping("/callapi")
   public void callApi(HttpServletRequest request) throws IOException {
