@@ -7,12 +7,12 @@ import lombok.ToString;
 @Getter
 @ToString
 public class NotifyRequest {
-    private String groupId;
+    private String lineGroupId;
     private String message;
     
     @Builder
-    public NotifyRequest(String groupId, String message) {
-        this.groupId = groupId;
+    public NotifyRequest(String lineGroupId, String message) {
+        this.lineGroupId = lineGroupId;
         this.message = message;
     }
 }
