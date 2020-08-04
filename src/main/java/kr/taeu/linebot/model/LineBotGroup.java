@@ -1,7 +1,5 @@
 package kr.taeu.linebot.model;
 
-import com.fasterxml.jackson.annotation.JsonValue;
-
 import lombok.Getter;
 
 @Getter
