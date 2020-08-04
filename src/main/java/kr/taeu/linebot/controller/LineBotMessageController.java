@@ -1,13 +1,12 @@
 package kr.taeu.linebot.controller;
 
 import java.io.IOException;
-import java.util.stream.Collectors;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import kr.taeu.linebot.dto.NotifyRequest;
 import kr.taeu.linebot.service.LineMessageService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,11 +17,11 @@ import lombok.extern.slf4j.Slf4j;
 public class LineBotMessageController {
   private final LineMessageService lineMessageService;
   
-  @PostMapping("/callapi")
-  public void callApi(HttpServletRequest request) throws IOException {
-    String text = request.getReader().lines()
-        .collect(Collectors.joining(System.lineSeparator()));
+  @PostMapping("/notify")
+  public void notify(@RequestBody final NotifyRequest dto) throws IOException {
+//    String text = request.getReader().lines()
+//        .collect(Collectors.joining(System.lineSeparator()));
     
-    lineMessageService.pushMessage(text);
+    lineMessageService.pushMessage(dto);
   }
 }

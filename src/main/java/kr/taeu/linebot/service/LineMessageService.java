@@ -21,6 +21,7 @@ import com.linecorp.bot.model.response.BotApiResponse;
 import com.linecorp.bot.spring.boot.annotation.EventMapping;
 import com.linecorp.bot.spring.boot.annotation.LineMessageHandler;
 
+import kr.taeu.linebot.dto.NotifyRequest;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -37,11 +38,12 @@ public class LineMessageService {
         handleTextContent(event.getReplyToken(), event, message);
     }
     
-    public BotApiResponse pushMessage(String text) {
+    public BotApiResponse pushMessage(NotifyRequest dto) {
         // TODO non-blocking 적용?
-        CompletableFuture<BotApiResponse> future = lineMessagingClient.pushMessage(new PushMessage("Cf5dc393dbfc047212f20cb10f622baee", Arrays.asList(
-            new TextMessage("장애송신!\n"
-                + "내용: " + text))));
+        // Cf5dc393dbfc047212f20cb10f622baee
+        CompletableFuture<BotApiResponse> future = lineMessagingClient.pushMessage(
+                new PushMessage(dto.getGroupId(),
+                        Arrays.asList(new TextMessage("장애송신!\n내용: " + dto.getMessage()))));
         log.info("아직 response 없음");
         BotApiResponse response = future.join();
         log.info("response get! " + response);
