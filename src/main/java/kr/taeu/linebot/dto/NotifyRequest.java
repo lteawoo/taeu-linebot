@@ -8,12 +8,12 @@ import lombok.ToString;
 @Getter
 @ToString
 public class NotifyRequest {
-    private LineBotGroup lineGroupId;
+    private LineBotGroup lineBotGroup;
     private String message;
     
     @Builder
-    public NotifyRequest(LineBotGroup lineGroupId, String message) {
-        this.lineGroupId = lineGroupId;
+    public NotifyRequest(LineBotGroup lineBotGroup, String message) {
+        this.lineBotGroup = lineBotGroup;
         this.message = message;
     }
 }
