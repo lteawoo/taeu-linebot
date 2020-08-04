@@ -2,8 +2,10 @@ package kr.taeu.linebot.dto;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.ToString;
 
 @Getter
+@ToString
 public class NotifyRequest {
     private String groupId;
     private String message;
