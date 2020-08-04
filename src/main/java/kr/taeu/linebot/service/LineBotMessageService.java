@@ -29,7 +29,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @LineMessageHandler
 @RequiredArgsConstructor
-public class LineMessageService {
+public class LineBotMessageService {
     private final LineMessagingClient lineMessagingClient;
 
     @EventMapping
