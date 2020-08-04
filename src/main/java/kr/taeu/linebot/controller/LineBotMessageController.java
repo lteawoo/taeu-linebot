@@ -20,8 +20,6 @@ public class LineBotMessageController {
   @PostMapping("/notify")
   public void notify(@RequestBody final NotifyRequest dto) throws IOException {
     log.info("notify request: " + dto);
-//    String text = request.getReader().lines()
-//        .collect(Collectors.joining(System.lineSeparator()));
     
     lineMessageService.pushMessage(dto);
   }

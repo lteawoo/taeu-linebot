@@ -1,5 +1,6 @@
 package kr.taeu.linebot.dto;
 
+import kr.taeu.linebot.model.LineBotGroup;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
@@ -7,11 +8,11 @@ import lombok.ToString;
 @Getter
 @ToString
 public class NotifyRequest {
-    private String lineGroupId;
+    private LineBotGroup lineGroupId;
     private String message;
     
     @Builder
-    public NotifyRequest(String lineGroupId, String message) {
+    public NotifyRequest(LineBotGroup lineGroupId, String message) {
         this.lineGroupId = lineGroupId;
         this.message = message;
     }

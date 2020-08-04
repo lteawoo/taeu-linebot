@@ -42,7 +42,7 @@ public class LineMessageService {
         // TODO non-blocking 적용?
         // Cf5dc393dbfc047212f20cb10f622baee
         CompletableFuture<BotApiResponse> future = lineMessagingClient.pushMessage(
-                new PushMessage(dto.getLineGroupId(),
+                new PushMessage(dto.getLineGroupId().getGroupId(),
                         Arrays.asList(new TextMessage("장애송신!\n내용: " + dto.getMessage()))));
         log.info("아직 response 없음");
         BotApiResponse response = future.join();
